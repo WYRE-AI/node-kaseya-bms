@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/wyre-technology/node-kaseya-bms/compare/v1.0.0...v1.0.1) (2026-05-20)
+
+
+### Bug Fixes
+
+* correct package exports so CJS/ESM resolve (+ packaging hardening) ([#2](https://github.com/wyre-technology/node-kaseya-bms/issues/2)) ([48b4ad4](https://github.com/wyre-technology/node-kaseya-bms/commit/48b4ad4764a7436f0ede80bbd9872d190395d630))
+
 # 1.0.0 (2026-05-01)
 
 

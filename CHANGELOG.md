@@ -13,3 +13,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Added
+
+- HTTPS enforcement for caller-supplied `baseUrl`: `normalizeBaseUrl` now
+  rejects non-`https:` schemes (plain `http://` is still allowed for
+  `localhost`/`127.0.0.1` to support local testing), throwing `KaseyaBmsError`.
+- `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md`.
+- CI workflow (`.github/workflows/ci.yml`) running lint, type check, build, and
+  tests on pull requests and pushes.
+
+### Changed
+
+- Added `type: "module"` so `tsup` emits CJS/ESM artifacts matching the
+  package `exports` map.
+- Standardized the toolchain on Node 22: `tsup` build target `node22` and
+  `@types/node` bumped to `^22`.
+
+## [0.1.0] - 2025-05-01
+
+### Added
+
+- Initial release of the Kaseya BMS SDK: a comprehensive, fully-typed
+  Node.js/TypeScript client for the Kaseya BMS PSA REST API v2.
+- Dual authentication support: long-lived API tokens and Kaseya One SSO
+  (JWT) bearer tokens.
+- HTTP client with rate limiting (300 req/min per tenant), automatic retries
+  on 429/transient errors, and pagination helpers.
+- Typed error classes covering authentication, authorization, validation,
+  not-found, rate-limit, application-level, and server errors.
+- Resource modules and TypeScript type definitions for the BMS API surface.

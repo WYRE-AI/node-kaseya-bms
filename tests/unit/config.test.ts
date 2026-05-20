@@ -24,6 +24,25 @@ describe('normalizeBaseUrl', () => {
       'https://my-tenant.bms.kaseya.com/api'
     );
   });
+
+  it('rejects a non-https scheme against a remote host', () => {
+    expect(() => normalizeBaseUrl('http://my-tenant.bms.kaseya.com')).toThrow(
+      /https/
+    );
+  });
+
+  it('allows http for localhost and 127.0.0.1', () => {
+    expect(normalizeBaseUrl('http://localhost:3000')).toBe(
+      'http://localhost:3000/api'
+    );
+    expect(normalizeBaseUrl('http://127.0.0.1:8080/api')).toBe(
+      'http://127.0.0.1:8080/api'
+    );
+  });
+
+  it('rejects a malformed URL', () => {
+    expect(() => normalizeBaseUrl('not a url')).toThrow(/Invalid baseUrl/);
+  });
 });
 
 describe('buildBaseUrlFromTenant', () => {

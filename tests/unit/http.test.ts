@@ -5,7 +5,7 @@
 import { describe, it, expect } from 'vitest';
 import { http, HttpResponse } from 'msw';
 import { server } from '../mocks/server.js';
-import { envelope, BASE } from '../mocks/handlers.js';
+import { BASE } from '../mocks/handlers.js';
 import { normalizePath, buildQueryString } from '../../src/http.js';
 import { KaseyaBmsClient } from '../../src/client.js';
 import {

@@ -2,6 +2,8 @@
  * Configuration types and defaults for the Kaseya BMS client.
  */
 
+import { KaseyaBmsError } from './errors.js';
+
 /**
  * Rate limiting configuration.
  *
@@ -87,11 +89,40 @@ export interface ResolvedConfig {
 }
 
 /**
+ * Returns true when a hostname is a local loopback address that is
+ * permitted to use plain `http://` (for local testing only).
+ */
+function isLocalHost(hostname: string): boolean {
+  const host = hostname.toLowerCase();
+  return host === 'localhost' || host === '127.0.0.1' || host === '[::1]';
+}
+
+/**
  * Normalize a tenant base URL by:
+ *   - validating the scheme is `https:` (or `http:` for localhost/127.0.0.1)
  *   - stripping trailing slashes
  *   - appending `/api` when not already present
+ *
+ * @throws {KaseyaBmsError} when the URL is malformed or uses a non-HTTPS
+ *   scheme against a non-local host.
  */
 export function normalizeBaseUrl(baseUrl: string): string {
+  let parsed: URL;
+  try {
+    parsed = new URL(baseUrl);
+  } catch {
+    throw new KaseyaBmsError(`Invalid baseUrl: ${baseUrl}`);
+  }
+  if (parsed.protocol !== 'https:') {
+    if (parsed.protocol === 'http:' && isLocalHost(parsed.hostname)) {
+      // allowed for local testing
+    } else {
+      throw new KaseyaBmsError(
+        `baseUrl must use https:// (got ${parsed.protocol}//${parsed.hostname}). ` +
+          'Plain http:// is only permitted for localhost/127.0.0.1.'
+      );
+    }
+  }
   const trimmed = baseUrl.replace(/\/+$/, '');
   if (/\/api$/i.test(trimmed)) return trimmed;
   return `${trimmed}/api`;

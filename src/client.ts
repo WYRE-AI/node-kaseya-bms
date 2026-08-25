@@ -20,7 +20,7 @@ import { KnowledgeBaseResource } from './resources/knowledge-base.js';
  *
  * @example
  * ```typescript
- * import { KaseyaBmsClient } from '@wyre-technology/node-kaseya-bms';
+ * import { KaseyaBmsClient } from '@wyre-ai/node-kaseya-bms';
  *
  * // API token auth (recommended)
  * const client = new KaseyaBmsClient({

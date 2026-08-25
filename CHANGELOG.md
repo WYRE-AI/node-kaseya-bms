@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/WYRE-AI/node-kaseya-bms/compare/v1.0.1...v1.0.2) (2026-08-25)
+
+
+### Bug Fixes
+
+* migrate to WYRE-AI org (npm scope, ghcr namespace, registry) ([#45](https://github.com/WYRE-AI/node-kaseya-bms/issues/45)) ([555c114](https://github.com/WYRE-AI/node-kaseya-bms/commit/555c1142adda8a8888ff24f18d55eda84f0b80b9))
+
 ## [1.0.1](https://github.com/wyre-technology/node-kaseya-bms/compare/v1.0.0...v1.0.1) (2026-05-20)
 
 

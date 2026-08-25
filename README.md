@@ -1,11 +1,11 @@
-# @wyre-technology/node-kaseya-bms
+# @wyre-ai/node-kaseya-bms
 
 Comprehensive, fully-typed Node.js/TypeScript library for the Kaseya BMS PSA REST API v2.
 
 ## Install
 
 ```bash
-npm install @wyre-technology/node-kaseya-bms
+npm install @wyre-ai/node-kaseya-bms
 ```
 
 ## Quick start
@@ -15,7 +15,7 @@ npm install @wyre-technology/node-kaseya-bms
 Issue a token from BMS Admin → Service Desk → API Tokens. Long-lived; no refresh needed.
 
 ```typescript
-import { KaseyaBmsClient } from '@wyre-technology/node-kaseya-bms';
+import { KaseyaBmsClient } from '@wyre-ai/node-kaseya-bms';
 
 const client = new KaseyaBmsClient({
   tenant: 'my-tenant',                  // <tenant>.bms.kaseya.com

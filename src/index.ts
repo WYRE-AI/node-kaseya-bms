@@ -1,5 +1,5 @@
 /**
- * @wyre-technology/node-kaseya-bms
+ * @wyre-ai/node-kaseya-bms
  *
  * Comprehensive, fully-typed Node.js/TypeScript library for the Kaseya BMS
  * PSA REST API v2.
